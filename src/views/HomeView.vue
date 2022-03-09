@@ -5,8 +5,7 @@
       <router-link to="/">首頁</router-link> |
       <router-link to="/products">前台產品列表</router-link> |
       <router-link to="/cart">前台購物車</router-link> |
-      <router-link to="/admin/products">後台</router-link>
-      測試
+      <router-link to="/admin">登入後台</router-link>
     </nav>
   </div>
   <router-view></router-view>
