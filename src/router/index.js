@@ -19,10 +19,10 @@ const routes = [
       }
     ]
   },
-  // {
-  //   path: 'login',
-  //   component: () => import('../views/Login.vue')
-  // },
+  {
+    path: '/login',
+    component: () => import('../views/LoginView.vue')
+  },
   {
     path: '/admin',
     name: 'Admin',
