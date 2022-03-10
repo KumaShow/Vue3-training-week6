@@ -16,7 +16,7 @@
                     </div>
                     <div class="col-sm-6">
                         <span class="badge bg-primary rounded-pill">{{ product.category }}</span>
-                        <h1>抓不到資料待處理</h1>
+                        <!-- <h1>抓不到資料待處理</h1> -->
                         <p>商品描述：{{ product.description }}</p>
                         <p>商品內容：{{ product.content }}</p>
                         <div class="h5">{{ product.origin_price }} 元</div>
@@ -53,6 +53,12 @@ export default {
       qty: 1
     }
   },
+  watch: {
+    // 當 id 變動時觸發
+    id () {
+      this.getProduct()
+    }
+  },
   methods: {
     openModal () {
       this.qty = 1
@@ -67,12 +73,12 @@ export default {
       this.$http.get(url).then(res => {
         this.product = res.data.product
       })
+    },
+    addToCart () {
+      // 執行外層方法
+      this.$emit('add-cart', this.id, this.qty)
+      this.hideModal()
     }
-    // addToCart () {
-    //   // 執行外層方法
-    //   this.$emit('add-cart', this.id, this.qty)
-    //   this.hideModal()
-    // }
   },
   mounted () {
     // ref="modal"
