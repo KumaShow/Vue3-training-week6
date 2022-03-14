@@ -16,7 +16,6 @@
                     </div>
                     <div class="col-sm-6">
                         <span class="badge bg-primary rounded-pill">{{ product.category }}</span>
-                        <!-- <h1>抓不到資料待處理</h1> -->
                         <p>商品描述：{{ product.description }}</p>
                         <p>商品內容：{{ product.content }}</p>
                         <div class="h5">{{ product.origin_price }} 元</div>
@@ -63,7 +62,6 @@ export default {
     openModal () {
       this.qty = 1
       this.modal.show()
-      console.log(this.product)
     },
     hideModal () {
       this.modal.hide()
