@@ -45,13 +45,13 @@
               </div>
             </td>
             <td>
-              <!-- :disable 在點擊按鈕後關閉，避免其他操作 -->
+              <!-- :disabled 在點擊按鈕後關閉，避免其他操作 -->
               <div class="btn-group btn-group-sm">
                 <button
                   type="button"
                   class="btn btn-outline-secondary"
                   @click="openProductModal(item.id)"
-                  :disable="isLoadingItem === item.id"
+                  :disabled="isLoadingItem === item.id"
                 >
                   <span
                     class="spinner-border spinner-border-sm"
