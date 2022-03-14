@@ -19,10 +19,10 @@
             <tr v-for="item in cartData.carts" :key="item.id">
               <td>
                 <button type="button" class="btn btn-outline-danger btn-sm"
-                    @click="deleteCartItem(item.id)" :disable="isLoadingItem === item.id">
+                    @click="deleteCartItem(item.id)">
                     <!-- <i class="fas fa-spinner fa-pulse" v-show="isLoadingItem === item.id"></i> -->
-                    <span class="spinner-border spinner-border-sm"
-                        v-show="isLoadingItem === item.id"></span>
+                    <!-- <span class="spinner-border spinner-border-sm"
+                        v-show="isLoadingItem === item.id"></span> -->
                     x
                 </button>
               </td>
@@ -35,9 +35,7 @@
               <td>
                 <div class="input-group input-group-sm">
                   <div class="input-group mb-3">
-                  <!-- <input min="1" type="number" class="form-control" v-model.number="item.qty"> -->
-                    <select id="" class="form-select" v-model="item.qty"
-                      :disable="isLoadingItem === item.id" @change="updateCart(item)">
+                    <select id="" class="form-select" v-model="item.qty" @change="updateCart(item)">
                       <option :value="num" v-for="num in 20" :key="`${num}+${item.id}`">
                           {{ num }}
                       </option>
