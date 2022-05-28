@@ -66,10 +66,11 @@ export default {
     hideModal () {
       this.modal.hide()
     },
-    getProduct () {
-      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/product/${this.id}`
+    getProduct (id) {
+      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/product/${id}`
       this.$http.get(url).then(res => {
         this.product = res.data.product
+        this.openModal()
       })
     },
     addToCart () {

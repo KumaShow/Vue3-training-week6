@@ -63,6 +63,7 @@
                   type="button"
                   class="btn btn-outline-danger"
                   @click="addToCart(item.id)"
+                  :disabled="isLoadingItem === item.id"
                 >
                   <span
                     class="spinner-border spinner-border-sm"
@@ -107,8 +108,8 @@ export default {
         })
     },
     openProductModal (id) {
-      this.productId = id
-      this.$refs.productModal.openModal()
+      // this.productId = id
+      this.$refs.productModal.getProduct(id)
     },
     addToCart (id, qty = 1) {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`
