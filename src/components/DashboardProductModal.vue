@@ -1,5 +1,5 @@
 <template>
-    <div id="dashboardProductModal" ref="dashboardProductModal" class="modal fade" tabindex="-1" aria-labelledby="productModalLabel"
+    <div id="dashboardProductModal" ref="modal" class="modal fade" tabindex="-1" aria-labelledby="productModalLabel"
                 aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content border-0">
@@ -123,10 +123,17 @@ export default {
   data () {
     return {
       modal: {},
-      tempProduct: {}
+      tempProduct: {
+        imagesUrl: []
+      }
     }
   },
-  //   props: ['tempProduct', 'isNew'],
+  props: ['product', 'isNew'],
+  watch: {
+    product () {
+      this.tempProduct = this.product
+    }
+  },
   methods: {
     // 當彈出視窗元件化後，要把方法綁訂到元件內使用
     updateProduct () {
@@ -139,12 +146,12 @@ export default {
       }
       // 依據api文件須回傳data物件格式
       this.$http[method](url, { data: this.tempProduct })
-        .then((res) => {
+        .then(() => {
           // 觸發外層方法getProducts
           this.$emit('get-products')
           this.modal.hide()
         })
-        .catch((err) => {
+        .catch(err => {
           alert(err.data.message)
         })
     }
