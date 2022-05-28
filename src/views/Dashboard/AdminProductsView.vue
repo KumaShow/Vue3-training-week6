@@ -1,10 +1,10 @@
 <template>
   <h1>後台產品列表</h1>
-  <div class="text-end mt-4">
+  <!-- <div class="text-end mt-4">
     <button type="button" class="btn btn-primary" @click="openModal('isNew')">
       建立新的產品
     </button>
-  </div>
+  </div> -->
   <table class="table mt-4">
     <thead>
       <tr>
@@ -58,11 +58,15 @@
   <!-- 內 get-product, 外 getProduct -->
   <pagination :pages="pagination" @get-product="getProducts"></pagination>
   <!-- Modal -->
-  <dashboard-product-modal :temp-product="tempProduct" :is-new="isNew" @get-products="getProducts"></dashboard-product-modal>
+  <dashboard-product-modal :product="tempProduct" :is-new="isNew" @get-products="getProducts"></dashboard-product-modal>
+  <!-- DelModal -->
+  <!-- <del-modal :temp-product="tempProduct" @get-products="getProducts"></del-modal> -->
+
 </template>
 
 <script>
 import pagination from '@/components/PaginationView.vue'
+// import DelModal from '@/components/DelModal.vue'
 import DashboardProductModal from '@/components/DashboardProductModal.vue'
 
 export default {
@@ -73,11 +77,13 @@ export default {
         imagesUrl: []
       },
       isNew: false,
-      pagination: {}
+      pagination: {},
+      DashboardProductModal: ''
     }
   },
   components: {
     pagination,
+    // DelModal
     DashboardProductModal
   },
   methods: {
@@ -101,11 +107,12 @@ export default {
         this.isNew = true
       } else if (status === 'edit') {
         this.tempProduct = { ...product }
-        DashboardProductModal.show()
+        this.DashboardProductModal.show()
         this.isNew = false
       } else if (status === 'delete') {
         // delProductModal.show()
         this.tempProduct = { ...product }
+        this.$refs.DelModal.show()
       }
     }
   },
