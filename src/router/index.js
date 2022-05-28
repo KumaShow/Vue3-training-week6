@@ -8,12 +8,12 @@ const routes = [
     component: HomeView,
     children: [
       {
-        path: '/products',
+        path: 'products',
         name: '產品列表',
         component: () => import('../views/ProductsView.vue')
       },
       {
-        path: '/cart',
+        path: 'cart',
         name: '購物車',
         component: () => import('../views/CartView.vue')
       }
@@ -35,6 +35,10 @@ const routes = [
       {
         path: 'orders',
         component: () => import('../views/Dashboard/OrdersView.vue')
+      },
+      {
+        path: 'coupons',
+        component: () => import('../views/Dashboard/CouponsView.vue')
       }
     ]
   }
